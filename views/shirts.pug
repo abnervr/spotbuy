@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Camisetas
+  ul
+  for result in results
+    li
+      p #{result.title}
+      img(src=result.thumbnail)
