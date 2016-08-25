@@ -1,0 +1,22 @@
+{
+  "name": "spotbuy",
+  "description": "",
+  "main": "",
+  "authors": [
+    "abner <abner.vr@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/abnervr/spotbuy",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7"
+  }
+}
