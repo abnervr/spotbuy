@@ -1,14 +1,14 @@
 var express = require('express');
-var shirts = require('../services/shirts');
+var tickets = require('../services/tickets');
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const query = req.query || {q: ''};
-  shirts.findShirts(query.q)
+  tickets.findTickets(query.q)
     .then((result) => {
-      res.render('shirts', result);
+      res.render('tickets', {results: result});
     })
     .catch((e) => {
       console.log(e);

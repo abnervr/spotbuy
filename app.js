@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var spotifyoauth  = require('./routes/spotifyoauth');
 var users = require('./routes/users');
 var shirts = require('./routes/shirts');
+var tickets = require('./routes/tickets');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', routes);
 app.use('/spotifyoauth', spotifyoauth);
 app.use('/users', users);
 app.use('/shirts', shirts);
+app.use('/tickets', tickets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
