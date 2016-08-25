@@ -9,6 +9,7 @@ var jquery = require('jquery');
 var routes = require('./routes/index');
 var spotifyoauth  = require('./routes/spotifyoauth');
 var users = require('./routes/users');
+var shirts = require('./routes/shirts');
 
 var app = express();
 
@@ -23,10 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static('bower_components'));
 
 app.use('/', routes);
 app.use('/spotifyoauth', spotifyoauth);
 app.use('/users', users);
+app.use('/shirts', shirts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
