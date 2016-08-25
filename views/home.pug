@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  #titleContainer.title
+    h1= title
+    link(rel='stylesheet', href='/stylesheets/cached.css')
+  
+  //script(type='text/javascript').
+  //    if (foo) bar(1 + 5)
+  body
+    h4.title Onde a música fica mais perto de você
+    
+    .container(style="text-align:center;")
+      button.btn.btn-primary#btn-login Login
+      #result
+

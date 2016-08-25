@@ -1,5 +1,93 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #titleContainer.title
+    h1= title
+    link(rel='stylesheet', href='/stylesheets/cached.css')
+
+  body
+    h4.title Onde a música fica mais perto de você
+    
+    .container(style="text-align:center;")
+      button.btn.btn-primary#btn-login Login
+      #result
+    
+    script(id="result-template", type="text/x-handlebars-template").
+      <dl>
+        <img src="{{images.0.url}}">
+        <dt>User Name</dt>
+        <dd>{{id}}</dd>
+        <dt>Display Name</dt>
+        <dd>{{display_name}}</dd>
+        <dt>Country</dt>
+        <dd>{{country}}</dd>
+        <dt>Followers</dt>
+        <dd>{{followers.total}}</dd>
+        <dt>Profile</dt>
+        <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
+        <dt>Email</dt>
+        <dd>{{email}}</dd>
+        <dt>Product</dt>
+        <dd>{{product}}</dd>
+      </dl>
+
+    script(type='text/javascript').
+      (function() {
+        function login(callback) {
+            var CLIENT_ID = 'f1eca833ed3748f882c07b0fa9b53d6d'; 
+            var REDIRECT_URI = 'http://127.0.0.1:3000/spotifyoauth';
+            function getLoginURL(scopes) {
+                return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
+                  '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
+                  '&scope=' + encodeURIComponent(scopes.join(' ')) +
+                  '&response_type=token';
+            }
+            
+            var url = getLoginURL([
+                'user-read-email'
+            ]);
+            
+            var width = 450,
+                height = 730,
+                left = (screen.width / 2) - (width / 2),
+                top = (screen.height / 2) - (height / 2);
+        
+            window.addEventListener("message", function(event) {
+                var hash = JSON.parse(event.data);
+                if (hash.type == 'access_token') {
+                    callback(hash.access_token);
+                }
+            }, false);
+            
+            var w = window.open(url,
+                                'Spotify',
+                                'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
+                              );
+            
+        }
+
+        function getUserData(accessToken) {
+            debugger;
+            return $.ajax({
+                url: 'https://api.spotify.com/v1/me',
+                headers: {
+                  'Authorization': 'Bearer ' + accessToken
+                }
+            });
+        }
+
+        var templateSource = document.getElementById('result-template').innerHTML,
+            template = Handlebars.compile(templateSource),
+            resultsPlaceholder = document.getElementById('result'),
+            loginButton = document.getElementById('btn-login');
+        
+        loginButton.addEventListener('click', function() {
+            login(function(accessToken) {
+                getUserData(accessToken)
+                    .then(function(response) {
+                        loginButton.style.display = 'none';
+                        resultsPlaceholder.innerHTML = template(response);
+                    });
+                });
+        });
+      })();
