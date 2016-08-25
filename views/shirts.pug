@@ -2,8 +2,10 @@ extends layout
 
 block content
   h1 Camisetas
-  ul
-  for result in results
-    li
-      p #{result.title}
-      img(src=result.thumbnail)
+  div(class="container")
+    div(class="row text-center")
+      for result in results
+        div(class="col-lg-3 col-md-4 col-xs-6 thumb")
+          span(class="thumbnail") R$ #{result.price.toFixed(2).replace('.', ',')}
+          a(href=result.permalink)
+            img(src=result.thumbnail, alt=result.title)
