@@ -21,12 +21,13 @@ block content
           div(class="thumb", style="margin-bottom: 15px;")
             img(src=artist.images.length ? artist.images[0].url : '', style="width:250px;")
           div(class="link")
-            a(href)
+            a(href=artist.uri)
               p #{artist.name}
+          if (artist.genres.length)
+            div(class="details")
+              p Gêneros: #{artist.genres}
           div(class="details")
-            p Localização: #{artist.name}
-          div(class="data")
-            p Data: #{artist.name}
+            p Popularidade: #{artist.popularity}
           div(class="data")
             a(href=`/shirts?q=${artist.name}`)
               button(class="btn btn-success") Camisetas

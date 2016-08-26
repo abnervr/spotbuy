@@ -20,9 +20,7 @@
         },
         json: true
       };
-      console.log('Beforepost', token);
       request.post(authOptions, function(error, response, body) {
-        console.log('updateAccessToken', error, response.statusCode, body);
         if (error || response.statusCode !== 200) {
           reject(error);
         }
