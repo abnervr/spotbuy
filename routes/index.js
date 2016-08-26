@@ -8,11 +8,13 @@ router.get('/', function(req, res) {
     res.redirect('/login');
   }
   const token = {access_token : req.cookies.access_token};
-  Promise.all([spotify.getUserData(token), spotify.getTopArtists(token)])
+  const offset = Number(req.query.offset) || 0;
+  Promise.all([spotify.getUserData(token), spotify.getTopArtists(token, offset)])
     .then((values) => {
       res.render('home', { title: 'SPOTBUY',
                             user : values[0],
                             topArtists : values[1],
+                            offset : offset
                           });
     }).catch((error) => {
       console.log('Index js error', error);

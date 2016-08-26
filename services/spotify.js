@@ -50,10 +50,10 @@
     });
   };
 
-  const getTopArtists = (token) => {
+  const getTopArtists = (token, offset) => {
     return new Promise((resolve, reject) => {
       var options = {
-        url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term',
+        url: `https://api.spotify.com/v1/me/top/artists?time_range=long_term&offset=${offset || 0}`,
         headers: { 'Authorization': 'Bearer ' + token.access_token },
         json: true
       };

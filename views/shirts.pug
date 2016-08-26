@@ -2,17 +2,16 @@ extends layout
 
 block content
   h1(style='text-align: center;') Camisetas
-  div(class="container")
-    div(class="row text-center")
+  .container
+    .row.text-center
       for result in results
-        div(class="col-lg-3 col-md-4 col-xs-6", style="margin-bottom:10px;border-left: 1px solid #ccc;border-right: 1px solid #ccc; min-height: 250px;")
-          div(class="thumb", style="margin-bottom: 15px;")
+        div.col-lg-3.col-md-4.col-xs-6(style="margin-bottom:10px;min-height: 250px;")
+          div(style="margin-bottom: 15px;")
             img(src=result.thumbnail, alt=result.title)
-          div(class="link")
-            a(href)
-              p #{result.title}
-          div(class="data")
-            p Preço: R$ #{result.price.toFixed(2).replace('.', ',')}
-          div(class="data")
+          div
+            p(style='white-space: nowrap; text-overflow: ellipsis; overflow: hidden;') #{result.title}
+            div.data
+              p R$ #{result.price.toFixed(2).replace('.', ',')}
+          div.data
             a(href=result.permalink)
               button(class="btn btn-success") Comprar

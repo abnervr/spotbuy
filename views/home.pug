@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  nav.navbar.navbar-default
+  nav.navbar.navbar-default.navbar-fixed
     .container-fluid
         .navbar-header
         button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
@@ -11,25 +11,24 @@ block content
             span.icon-bar
         a.navbar-brand(href='#') SPOTBUY
         ul.nav.navbar-nav.navbar-right
-          li #{user.display_name}
+          li(style='margin: 10px;') #{user.display_name}
           li
             img.img-circle(src=user.images.length ? user.images[0].url : '', height='44px')
-  div.container
-    div.row
+  .container
+    .row.items
       for artist in topArtists.items
-        div(class="col-lg-3 col-md-4 col-xs-6", style="margin-bottom:10px;border-left: 1px solid #ccc;border-right: 1px solid #ccc;min-height: 450px;")
-          div(class="thumb", style="margin-bottom: 15px;")
-            img(src=artist.images.length ? artist.images[0].url : '', style="width:250px;")
-          div(class="link")
-            a(href=artist.uri)
-              p #{artist.name}
-          if (artist.genres.length)
-            div(class="details")
-              p Gêneros: #{artist.genres}
-          div(class="details")
-            p Popularidade: #{artist.popularity}
-          div(class="data")
-            a(href=`/shirts?q=${artist.name}`)
-              button(class="btn btn-success") Camisetas
-            a(href=`/tickets?q=${artist.name}`,style='margin-left: 10px;')
-              button(class="btn btn-success") Ingressos
+        .item.col-lg-3.col-md-4.col-xs-6(style="margin-bottom:10px;")
+          div
+            div(class="link")
+              a(href=artist.uri) #{artist.name}
+
+            div(class="thumb", style=`margin-bottom: 15px; height: 200px; overflow: hidden; background-image: url(${artist.images[0].url}); background-size: cover;`)
+              div.popularity #{artist.popularity}
+            .info
+              div.data
+                a.btn.btn-success(href=`/shirts?q=${artist.name}`) Camisetas
+                a.btn.btn-success(href=`/tickets?q=${artist.name}`, style='margin-left: 10px;') Ingressos
+    div.row.bar(style)
+      if (offset > 0)
+        a.btn.btn-success(href=`/?offset=${offset - 20}`) Anterior
+      a.btn.btn-success(href=`/?offset=${offset + 20}`) Próximo
