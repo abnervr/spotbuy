@@ -9,6 +9,8 @@
   "globals": {
     "require": true,
     "Promise": true,
-    "module": true
+    "module": true,
+    "console": true,
+    "Buffer": true
   }
 }
