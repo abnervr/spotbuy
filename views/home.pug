@@ -15,4 +15,11 @@ block content
               li
                 img.img-circle(src=user.images[0].url)
     div
-      h1 PEGAR MÚSICA ATUAL DO SPOTIFY
+      for artist in topArtists.items
+        div
+          p
+            b #{artist.name}
+          p
+            a(href=`/shirts?q=${artist.name}`) Camisetas
+          p
+            a(href=`/tickets?q=${artist.name}`) Ingressos

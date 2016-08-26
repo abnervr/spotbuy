@@ -31,7 +31,7 @@ router.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -75,10 +75,12 @@ router.get('/callback', function(req, res) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+            refresh_token = body.refresh_token,
+            expires_in = body.expires_in;
 
-        res.cookie('access_token', access_token);
-        res.cookie('refresh_token', refresh_token);
+        console.log(expires_in);
+        res.cookie('access_token', access_token, {expires: 0});
+        res.cookie('refresh_token', refresh_token, {expires: 0});
         res.redirect('/');
       } else {
         res.redirect('/#' +

@@ -38,7 +38,7 @@
         if (response.statusCode === 200) {
           resolve(body);
         } else {
-          console.log('TopArtistsErro', response.statusCode, error);
+          console.log('TopArtistsErro', response.statusCode, error, body);
           reject(error);
         }
       });

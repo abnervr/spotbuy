@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     res.redirect('/login');
   }
   const token = {access_token : req.cookies.access_token};
-  Promise.all([spotify.getUserData(token)])
+  Promise.all([spotify.getUserData(token), spotify.getTopArtists(token)])
     .then((values) => {
       res.render('home', { title: 'SPOTBUY',
                             user : values[0],
