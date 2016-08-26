@@ -11,6 +11,7 @@
     "Promise": true,
     "module": true,
     "console": true,
-    "Buffer": true
+    "Buffer": true,
+    "__dirname": true
   }
 }
