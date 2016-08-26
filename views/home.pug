@@ -1,25 +1,34 @@
 extends layout
 
 block content
-    nav.navbar.navbar-default
-        .container-fluid
-            .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            a.navbar-brand(href='#') SPOTBUY
-            ul.nav.navbar-nav.navbar-right
-              li #{user.display_name}
-              li
-                img.img-circle(src=user.images[0].url)
-    div
+  nav.navbar.navbar-default
+    .container-fluid
+        .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href='#') SPOTBUY
+        ul.nav.navbar-nav.navbar-right
+          li #{user.display_name}
+          li
+            img.img-circle(src=user.images.length ? user.images[0].url : '', height='44px')
+  div.container
+    div.row
       for artist in topArtists.items
-        div
-          p
-            b #{artist.name}
-          p
-            a(href=`/shirts?q=${artist.name}`) Camisetas
-          p
-            a(href=`/tickets?q=${artist.name}`) Ingressos
+        div(class="col-lg-3 col-md-4 col-xs-6", style="margin-bottom:10px;border-left: 1px solid #ccc;border-right: 1px solid #ccc;min-height: 450px;")
+          div(class="thumb", style="margin-bottom: 15px;")
+            img(src=artist.images.length ? artist.images[0].url : '', style="width:250px;")
+          div(class="link")
+            a(href)
+              p #{artist.name}
+          div(class="details")
+            p Localização: #{artist.name}
+          div(class="data")
+            p Data: #{artist.name}
+          div(class="data")
+            a(href=`/shirts?q=${artist.name}`)
+              button(class="btn btn-success") Camisetas
+            a(href=`/tickets?q=${artist.name}`,style='margin-left: 10px;')
+              button(class="btn btn-success") Ingressos

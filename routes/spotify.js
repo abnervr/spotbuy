@@ -79,8 +79,9 @@ router.get('/callback', function(req, res) {
             expires_in = body.expires_in;
 
         console.log(expires_in);
-        res.cookie('access_token', access_token, {expires: 0});
-        res.cookie('refresh_token', refresh_token, {expires: 0});
+        res.cookie('access_token', access_token);
+        res.cookie('refresh_token', refresh_token);
+        res.cookie('expires', new Date().getTime() + (expires_in * 1000));
         res.redirect('/');
       } else {
         res.redirect('/#' +
