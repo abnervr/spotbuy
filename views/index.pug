@@ -1,20 +1,18 @@
 extends layout
 
 block content
-  #titleContainer.title
-    h1= title
+    #titleContainer.title
+        h1= title
     link(rel='stylesheet', href='/stylesheets/cached.css')
-
-  body
-    h4.title Onde a música fica mais perto de você
-    
-    .container(style="text-align:center;")
-      button.btn.btn-primary#btn-login Login
-      #result
+    body
+        h4.title Onde a música fica mais perto de você
+        .container(style="text-align:center;")
+        button.btn.btn-primary#btn-login Login
+        #result
     
     script(id="result-template", type="text/x-handlebars-template").
       <dl>
-        <img src="{{images.0.url}}">
+        <img class="img-circle" src="{{images.0.url}}">
         <dt>User Name</dt>
         <dd>{{id}}</dd>
         <dt>Display Name</dt>
@@ -67,7 +65,6 @@ block content
         }
 
         function getUserData(accessToken) {
-            debugger;
             return $.ajax({
                 url: 'https://api.spotify.com/v1/me',
                 headers: {

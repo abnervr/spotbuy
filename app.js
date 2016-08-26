@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var home = require('./routes/home');
 var spotifyoauth  = require('./routes/spotifyoauth');
 var users = require('./routes/users');
 var shirts = require('./routes/shirts');
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static', express.static('bower_components'));
 
 app.use('/', routes);
+app.use('/home', home);
 app.use('/spotifyoauth', spotifyoauth);
 app.use('/users', users);
 app.use('/shirts', shirts);
