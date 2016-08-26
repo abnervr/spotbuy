@@ -11,9 +11,8 @@ block content
                 span.icon-bar
             a.navbar-brand(href='#') SPOTBUY
             ul.nav.navbar-nav.navbar-right
-              li MODEL NOME DO USUÁRIO
+              li #{user.display_name}
               li
-                img.img-circle(src='MODEL IMAGEM DO USUÁRIO')
-    body
-      "PEGAR MÚSICA ATUAL DO SPOTIFY"
-      "http://stackoverflow.com/questions/22385843/is-it-possible-to-get-the-currently-playing-track-in-the-1-x-apps-api"
+                img.img-circle(src=user.images[0].url)
+    div
+      h1 PEGAR MÚSICA ATUAL DO SPOTIFY

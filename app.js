@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var home = require('./routes/home');
 var spotifyoauth  = require('./routes/spotifyoauth');
+var spotify = require('./routes/spotify');
 var users = require('./routes/users');
 var shirts = require('./routes/shirts');
 var tickets = require('./routes/tickets');
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static', express.static('bower_components'));
 
 app.use('/', routes);
+app.use('/', spotify);
 app.use('/home', home);
 app.use('/spotifyoauth', spotifyoauth);
 app.use('/users', users);
