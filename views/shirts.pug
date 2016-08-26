@@ -5,13 +5,14 @@ block content
   .container
     .row.text-center
       for result in results
-        div.col-lg-3.col-md-4.col-xs-6(style="margin-bottom:10px;min-height: 250px;")
-          div(style="margin-bottom: 15px;")
-            img(src=result.thumbnail, alt=result.title)
+        div.item.col-lg-3.col-md-4.col-xs-6(style="margin-bottom:10px;min-height: 250px;")
           div
-            p(style='white-space: nowrap; text-overflow: ellipsis; overflow: hidden;') #{result.title}
+            div(style="margin-bottom: 15px;")
+              img(src=result.thumbnail, alt=result.title)
+            div.details
+              p #{result.title}
+              div.data
+                p R$ #{result.price.toFixed(2).replace('.', ',')}
             div.data
-              p R$ #{result.price.toFixed(2).replace('.', ',')}
-          div.data
-            a(href=result.permalink)
-              button(class="btn btn-success") Comprar
+              a(href=result.permalink)
+                button(class="btn btn-success") Comprar

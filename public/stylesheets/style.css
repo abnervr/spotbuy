@@ -12,7 +12,7 @@ a, p, h1 {
   opacity: 0.95;
 }
 
-.container {
+.navbar + .container {
   padding-top: 60px;
   padding-bottom: 50px;
 }
@@ -100,4 +100,10 @@ a, p, h1 {
 
 .bar a {
   margin: 0 5px;
+}
+
+.details p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

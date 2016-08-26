@@ -1,20 +1,22 @@
 extends layout
 
 block content
-  h1 Ingressos
+  h1.text-center Ingressos
   div(class="container")
     div(class="row")
       for result in results
-        div(class="col-lg-3 col-md-4 col-xs-6", style="margin-bottom:10px;border-left: 1px solid #ccc;border-right: 1px solid #ccc;")
-          div(style="margin-bottom: 15px;")
-            img(src='http://s3-eu-west-1.amazonaws.com/statictb.net/categoria/'+result.genreId+'.jpg', style="width:250px;")
-          div(class="link")
-            a(href=result.url)
-              p #{result.name}
-          div(class="details")
-            p Localização: #{result.venue}
-          div(class="details")
-            p Data: #{result.dateFormatted}
-          div(class="data")
-            a(href=result.pub_url)
-              button(class="btn btn-success") Comprar Ingresso
+        div(class="col-lg-3 col-md-4 col-xs-6 item", style="margin-bottom:10px;")
+          div
+            div(style="margin-bottom: 15px;")
+              img(src='http://s3-eu-west-1.amazonaws.com/statictb.net/categoria/'+result.genreId+'.jpg', style="width:100%;height:148px;")
+            div(style="margin-left: 10px;")
+              div(class="details")
+                a(href=result.url)
+                  p #{result.name}
+              div(class="details")
+                p Localização: #{result.venue}
+              div(class="details")
+                p Data: #{result.dateFormatted}
+              div(class="data")
+                a(href=result.pub_url)
+                  button(class="btn btn-success") Comprar Ingresso
