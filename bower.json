@@ -1,10 +1,11 @@
 {
   "name": "spotbuy",
-  "description": "",
+  "description": "WebApp para consumo de produtos relacionados as bandas preferidas.",
   "main": "",
   "authors": [
     "abner <abner.vr@gmail.com>",
     "andré tosato <andreluistosatoo@gmail.com>"
+    "andre bonon <andrebonon@gmail.com>"
   ],
   "license": "MIT",
   "homepage": "https://github.com/abnervr/spotbuy",

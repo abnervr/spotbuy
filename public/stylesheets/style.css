@@ -21,6 +21,56 @@ a, p, h1 {
   text-align: center;
 }
 
+.items div.thumb {
+  margin-bottom: 15px;
+  height: 200px;
+  overflow: hidden;
+  background-size: 110%;
+  background-position: center center;
+  transition: all .3s ease-in-out;
+}
+
+.items .item:hover div.thumb {
+  background-size: 100%;
+}
+
+.items div.thumb .play-btn {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+.items div.thumb .play-btn:before {
+  opacity: 0;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+
+  position: absolute;
+  top: 30%;
+  left: 45%;
+
+  border-top: 35px solid transparent;
+  border-bottom: 35px solid transparent;
+  border-left: 40px solid rgba(255, 255, 255, 1);
+
+  transition: all .3s ease-in-out;
+}
+
+.items .item:hover div.thumb .play-btn:before {
+  opacity: 1;
+  border-top: 31.5px solid transparent;
+  border-bottom: 31.5px solid transparent;
+  border-left: 36px solid rgba(255, 255, 255, 0.6);
+
+  top: 33%;
+  left: 45%;
+}
+
 
 .item {
   position: relative;
@@ -56,6 +106,21 @@ a, p, h1 {
 .item:hover > div {
   box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
   opacity: 1;
+}
+
+.item .img-wrapper {
+  margin-bottom: 15px;
+  height:280px;
+  overflow: hidden;
+}
+
+.item .img-wrapper img {
+  width: 100%;
+}
+
+.item.item-wrapper {
+  margin-bottom:10px;
+  min-height: 250px;
 }
 
 .popularity {

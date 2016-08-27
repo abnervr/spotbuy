@@ -9,7 +9,7 @@ block content
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        a.navbar-brand(href='#') SPOTBUY
+        a.navbar-brand(href='#') SPOTIBUY
         ul.nav.navbar-nav.navbar-right
           li(style='margin: 10px;') #{user.display_name}
           li
@@ -22,7 +22,8 @@ block content
             div(class="link")
               a(href=artist.uri) #{artist.name}
 
-            div(class="thumb", style=`margin-bottom: 15px; height: 200px; overflow: hidden; background-image: url(${artist.images[0].url}); background-size: cover;`)
+            div.thumb(style=`background-image: url(${artist.images[0].url});`)
+              a.play-btn(href=artist.uri)
               div.popularity #{artist.popularity}
             .info
               div.data
