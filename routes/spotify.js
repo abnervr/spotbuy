@@ -6,7 +6,7 @@ var router = express.Router();
 
 var client_id = 'c6f1c805e3404b3699d34815af4ef299'; // Your client id
 var client_secret = '9ef88f6a78cd44dd883ee56d285b306a'; // Your secret
-var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
+var redirect_uri = 'http://spotibuy.heroku.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
