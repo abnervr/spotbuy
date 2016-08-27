@@ -1,18 +1,40 @@
 extends layout
 
 block content
-  h1(style='text-align: center;') Camisetas
+  nav.navbar.navbar-default.navbar-fixed
+    .container-fluid
+        .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href='#') SPOTIBUY
+        ul.nav.navbar-nav.navbar-right
+          li(style='margin: 10px;') #{user.display_name}
+          li
+            img.img-circle(src=user.images.length ? user.images[0].url : '', height='44px')
   .container
-    .row.text-center
-      for result in results
-        div.item.item-wrapper.col-lg-3.col-md-4.col-xs-6
-          div
-            div.img-wrapper
-              img(src=result.thumbnail.replace('-I', '-O'), alt=result.title)
-            div.details
-              p #{result.title}
+    h1.text-center Camisetas
+    .container
+      .row.text-center
+        if !results.length
+          h2 Cara! Você é Hipster demais!
+          h2 A sua banda não é popular o suficiente.
+          h2 Tente outra banda. =)
+          h3
+            a(href="/") Voltar
+
+
+        for result in results
+          div.item.item-wrapper.col-lg-3.col-md-4.col-xs-6
+            div
+              div.img-wrapper
+                img(src=result.thumbnail.replace('-I', '-O'), alt=result.title)
+              div.details
+                p #{result.title}
+                div.data
+                  p R$ #{result.price.toFixed(2).replace('.', ',')}
               div.data
-                p R$ #{result.price.toFixed(2).replace('.', ',')}
-            div.data
-              a(href=result.permalink)
-                button(class="btn btn-success") Comprar
+                a(href=result.permalink)
+                  button(class="btn btn-success") Comprar

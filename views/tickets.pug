@@ -1,22 +1,44 @@
 extends layout
 
 block content
-  h1.text-center Ingressos
-  div(class="container")
-    div(class="row")
-      for result in results
-        div(class="col-lg-3 col-md-4 col-xs-6 item", style="margin-bottom:10px;")
-          div
-            div(style="margin-bottom: 15px;")
-              img(src='http://s3-eu-west-1.amazonaws.com/statictb.net/categoria/'+result.genreId+'.jpg', style="width:100%;height:148px;")
-            div(style="margin-left: 10px;")
-              div(class="details")
-                a(href=result.url)
-                  p #{result.name}
-              div(class="details")
-                p Localização: #{result.venue}
-              div(class="details")
-                p Data: #{result.dateFormatted}
-              div(class="data")
-                a(href=result.pub_url)
-                  button(class="btn btn-success") Comprar Ingresso
+  nav.navbar.navbar-default.navbar-fixed
+    .container-fluid
+        .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand(href='#') SPOTIBUY
+        ul.nav.navbar-nav.navbar-right
+          li(style='margin: 10px;') #{user.display_name}
+          li
+            img.img-circle(src=user.images.length ? user.images[0].url : '', height='44px')
+  .container
+    h1.text-center Ingressos
+    div(class="container")
+      .row.text-center
+        if !results.length
+          h2 Amigo, sua banda não está com nada! =P
+          h2 Não encontramos nenhum show programado.
+          h2 Tente outra banda. =)
+          h3
+            a(href="/") Voltar
+
+
+        for result in results
+          div(class="col-lg-3 col-md-4 col-xs-6 item", style="margin-bottom:10px;")
+            div
+              div(style="margin-bottom: 15px;")
+                img(src='http://s3-eu-west-1.amazonaws.com/statictb.net/categoria/'+result.genreId+'.jpg', style="width:100%;height:148px;")
+              div(style="margin-left: 10px;")
+                div(class="details")
+                  a(href=result.url)
+                    p #{result.name}
+                div(class="details")
+                  p Localização: #{result.venue}
+                div(class="details")
+                  p Data: #{result.dateFormatted}
+                div(class="data")
+                  a(href=result.pub_url)
+                    button(class="btn btn-success") Comprar Ingresso

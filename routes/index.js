@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
   const offset = Number(req.query.offset) || 0;
   Promise.all([spotify.getUserData(token), spotify.getTopArtists(token, offset)])
     .then((values) => {
-      res.render('home', { title: 'SPOTBUY',
+      res.render('home', {  title: 'SPOTIBUY',
                             user : values[0],
                             topArtists : values[1],
                             offset : offset
